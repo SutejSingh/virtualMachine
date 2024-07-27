@@ -1,4 +1,4 @@
-# Install script for directory: /Users/sutejsingh/Documents/Personal Projects/itp435/pa5-SutejSingh/src
+# Install script for directory: /Users/sutejsingh/Documents/Personal Projects/virtualMachine/virtualMachine/src
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

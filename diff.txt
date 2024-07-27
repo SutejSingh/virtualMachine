@@ -1,0 +1,1 @@
+Files stack.txt and expected/fibonacci-stack.txt are identical

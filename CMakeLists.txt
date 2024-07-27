@@ -2,7 +2,7 @@
 cmake_minimum_required(VERSION 3.20)
 
 # Project name
-project(pa5)
+project(virtualMachine)
 
 # Build for C++20 if we can
 set(CMAKE_CXX_STANDARD 20)
