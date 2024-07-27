@@ -71,6 +71,10 @@ Machine::Machine()
 void Machine::readFile(const std::string& filename) {
 
     std::ifstream file(filename);
+    if (!file.is_open()) {
+        log("ERROR File not found: " + filename);
+        throw std::runtime_error("ERROR File not found: " + filename);
+    }
     std::string line;
 
     while (std::getline(file, line)) {
@@ -135,6 +139,10 @@ int Machine::getRegisterValue(const std::string& reg) const
 
 void Machine::log(const std::string& executingOpName){
 
+    if(executingOpName.find("ERROR") != std::string::npos){
+        logFile << executingOpName << "\n";
+        return;
+    }
 
     logFile << "********************\n";
 

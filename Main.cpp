@@ -4,6 +4,7 @@
 // DO NOT EDIT!!!!
 
 #include "SrcMain.h"
+#include <iostream>
 
 int main(int argc, const char* argv[])
 {

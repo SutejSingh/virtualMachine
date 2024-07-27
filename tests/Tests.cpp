@@ -1,12 +1,38 @@
 #include "catch.hpp"
 #include "SrcMain.h"
 #include <string>
-#include <chrono>
+#include <sstream>
+#include <iostream>
 
 // Helper function declarations (don't change these)
 extern bool CheckFileMD5(const std::string& fileName, const std::string& expected);
 extern bool CheckTextFilesSame(const std::string& fileNameA, 
 	const std::string& fileNameB);
+
+TEST_CASE("File IO Error Handling") {
+	SECTION("File Path does not exist") {
+		const char* argv[] = {
+			"tests/tests",
+			"input/doesNotExist.psm"
+		};
+		ProcessCommandArgs(2, argv);
+		bool result = CheckTextFilesSame("log.txt", "expected/fileNotFound-log.txt");
+		REQUIRE(result);
+	}
+
+	SECTION("No File Specified") {
+		const char* argv[] = {
+			"tests/tests"
+		};
+		// Redirect cout to a buffer
+		std::streambuf* oldCoutStreamBuf = std::cout.rdbuf();
+		std::ostringstream strCout;
+		std::cout.rdbuf(strCout.rdbuf());
+		ProcessCommandArgs(1, argv);
+		std::cout.rdbuf(oldCoutStreamBuf);
+		REQUIRE(strCout.str() == "No file specified\n");
+	}
+}
 
 TEST_CASE("Basic tests")
 {
